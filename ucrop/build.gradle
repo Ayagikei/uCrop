@@ -1,15 +1,16 @@
 apply plugin: 'com.android.library'
-apply from: '../mavenpush.gradle'
+// apply from: '../mavenpush.gradle'
+apply from: 'https://raw.githubusercontent.com/Ayagikei/mvn-repo/main/gradle-mvn-push.gradle'
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion '30.0.2'
+    compileSdkVersion 32
+    buildToolsVersion '32.0.0'
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 31
+        minSdkVersion 21
+        targetSdkVersion 32
         versionCode 26
-        versionName "2.2.8-native"
+        versionName "2.2.8"
 
         vectorDrawables.useSupportLibrary = true
     }
