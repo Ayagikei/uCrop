@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
@@ -572,14 +573,15 @@ public class SampleActivity extends BaseActivity implements UCropFragmentCallbac
     private UCrop advancedConfig(@NonNull UCrop uCrop) {
         UCrop.Options options = new UCrop.Options();
 
-        switch (mRadioGroupCompressionSettings.getCheckedRadioButtonId()) {
-            case R.id.radio_png:
-                options.setCompressionFormat(Bitmap.CompressFormat.PNG);
-                break;
-            case R.id.radio_jpeg:
-            default:
-                options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
-                break;
+        options.setStatusBarColor(Color.WHITE);
+        int checkedCompressionRadioButtonId =
+                mRadioGroupCompressionSettings.getCheckedRadioButtonId();
+        if (checkedCompressionRadioButtonId == R.id.radio_png) {
+            options.setCompressionFormat(Bitmap.CompressFormat.PNG);
+        } else if (checkedCompressionRadioButtonId == R.id.radio_jpeg) {
+            // do noting
+        } else {
+            options.setCompressionFormat(Bitmap.CompressFormat.JPEG);
         }
         options.setCompressionQuality(mSeekBarQuality.getProgress());
 
